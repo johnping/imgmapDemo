@@ -1,0 +1,31 @@
+﻿<!doctype html>
+<html>
+<head>
+<script type="text/javascript" src="jquery-1.7.min.js"></script>
+</head>
+<body>
+<img src="planets.jpg" border="0" usemap="#planetmap" alt="Planets" />
+
+<map name="planetmap" id="planetmap">
+  <area shape="circle" coords="180,139,14" href ="venus.html" title="Venus"  />
+  <area shape="circle" coords="129,161,10" href ="mercur.html" title="Mercury" />
+  <area shape="rect" coords="0,0,110,260" href ="sun.html" title="Sun" />
+</map>
+<div id="content" style="background:#ccc;border:1px solid blue;width:100px;height:40px;"></div>
+<script>
+
+		$('#planetmap area').on('mouseover',function(){
+				var content = 'test content';
+				$(this).css('position','relative');
+				
+				var cods = $(this).attr('coords');
+				var pos={};
+				pos.x = parseInt( cods.split(',')[0] )+10;
+				pos.y = parseInt( cods.split(',')[1] )+10;
+				console.log(pos)
+				$('#content').text(content).css({'position':'absolute','top':pos.y+'px','left':pos.x+'px'});
+		})
+</script>
+</body>
+
+</html>
